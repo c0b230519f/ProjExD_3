@@ -209,10 +209,14 @@ def main():
                 return
              
         for beam in beams:
-            for i, bomb in enumerate(bombs):
-                if beam and beam.rct.colliderect(bomb.rct):
-                    bombs[i] = None
-                    beams[beams.index(beam)] = None  # 衝突したビームをNoneにする
+            # for i, bomb in enumerate(bombs):
+            #    if beam and beam.rct.colliderect(bomb.rct):
+            #        bombs[i] = None
+            #        beams[beams.index(beam)] = None  # 衝突したビームをNoneにする
+            for bomb in bombs[:]:
+                if beam.rct.colliderect(bomb.rct):
+                    bombs.remove(bomb)  # 爆弾を削除
+                    beams.remove(beam)
                     score.add_score(1)
                     bird.change_img(6, screen)
                     pg.display.update()
