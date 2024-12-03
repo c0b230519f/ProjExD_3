@@ -154,7 +154,7 @@ class Score:
 
     def add_score(self, value: int):
         """
-        スコアを増加させる
+        スコアを増加させる。
         引数 value：加算するスコアの値
         """
         self.score += value
